@@ -23,7 +23,6 @@ class Cart{
 		this.min_angle = 0
 		this.max_angle = Math.PI * 2
 
-
 		this.class = Cart
 		this.class.push(this)
 	}
@@ -83,17 +82,11 @@ class Cart{
 
 	draw (ctx) {
 		ctx.save()
-
 		ctx.translate(this.data.x, this.data.y)
-		
 		ctx.rotate(this.angle)
-
 		this.data.draw_fn(ctx)
-		
 		ctx.restore()
-
 		this.rotate()
-
 		this.walk()
 	}
 
@@ -131,15 +124,8 @@ class Cart{
 		if (s.vel < this.min_velocity) s.vel = this.min_velocity
 
 		this.velocity = s.vel 
-
 		this.data.x += (this.velocity * Math.cos(this.angle))
-
 		this.data.y += (this.velocity * Math.sin(this.angle))
-
-
-		// console.log(Math.sin(this.angle), Math.cos(this.angle))
-		console.log(this.data.x, this.data.y)
-
 	}
 
 	static isInstance (int) { return (typeof this.data.instances[int] == 'object') }

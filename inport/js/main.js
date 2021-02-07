@@ -39,30 +39,21 @@ s.init.listener = function() {
 	s.body = $('body')
 
 	s.body.on('keydown', function(e) {
-
 		let key = e.keyCode
-
 		key = s.event.keycode(key)
-
 		s.event.keydown(key)
 	})
 
 	s.body.on('keyup', function(e) {
-
 		let key = e.keyCode
-
 		key = s.event.keycode(key)
-
 		s.event.keyup(key)
 	})
 }
 
 s.init.loop = function() {
-
 	s.runing = true
-
 	s.loop()
-
 }
 
 
@@ -71,12 +62,8 @@ s.init.elements = function () {
 	let fn = function (ctx) {
 		let len = this.len
 		ctx.save()
-		ctx.beginPath()
-		ctx.arc(0, 0, len, 0, 2 * Math.PI)
-		ctx.fill()
-		ctx.moveTo(len, 0)
-		ctx.lineTo(len * 2, 0)
-		ctx.stroke()
+		ctx.fillStyle = 'green'
+		ctx.fillRect(-len/2, len/2, len, len)
 		ctx.restore()
 	}
 
@@ -85,19 +72,12 @@ s.init.elements = function () {
 
 
 s.loop = function () {
-
 	s.ctx.clearRect(0, 0, s.width, s.height)
-
 	s.ctx.save()
-
 	s.ctx.translate(s.width/2, s.height/2)
-
 	s.frame()
-
 	s.ctx.restore()
-	
 	if (s.runing) window.requestAnimationFrame(s.loop)
-
 }
 
 s.frame = function () {
